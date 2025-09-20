@@ -1,0 +1,1581 @@
+export interface QuestionData {
+  question: string;
+  category: string;
+  difficulty: 'entry' | 'mid' | 'senior' | 'executive';
+  tags: string[];
+}
+
+export const QUESTION_DATABASE: Record<string, QuestionData[]> = {
+  // Software Engineering
+  'software-engineer': [
+    {
+      question: "Tell me about a challenging technical problem you solved recently.",
+      category: "Technical Skills",
+      difficulty: "entry",
+      tags: ["problem-solving", "technical"]
+    },
+    {
+      question: "How do you approach debugging a complex issue in production?",
+      category: "Technical Skills",
+      difficulty: "mid",
+      tags: ["debugging", "production", "troubleshooting"]
+    },
+    {
+      question: "Describe your experience with code reviews and how you handle feedback.",
+      category: "Collaboration",
+      difficulty: "entry",
+      tags: ["code-review", "collaboration", "feedback"]
+    },
+    {
+      question: "How do you ensure code quality and maintainability in large projects?",
+      category: "Technical Skills",
+      difficulty: "senior",
+      tags: ["code-quality", "architecture", "maintainability"]
+    },
+    {
+      question: "Explain a time when you had to learn a new technology quickly for a project.",
+      category: "Learning & Adaptability",
+      difficulty: "entry",
+      tags: ["learning", "adaptability", "new-technology"]
+    },
+    {
+      question: "How do you handle technical debt in your projects?",
+      category: "Technical Skills",
+      difficulty: "senior",
+      tags: ["technical-debt", "project-management", "architecture"]
+    },
+    {
+      question: "Describe your experience with testing strategies and methodologies.",
+      category: "Technical Skills",
+      difficulty: "mid",
+      tags: ["testing", "quality-assurance", "methodology"]
+    },
+    {
+      question: "How do you approach system design for scalable applications?",
+      category: "System Design",
+      difficulty: "senior",
+      tags: ["system-design", "scalability", "architecture"]
+    },
+    {
+      question: "Tell me about a time you had to work with a difficult team member.",
+      category: "Soft Skills",
+      difficulty: "mid",
+      tags: ["teamwork", "conflict-resolution", "communication"]
+    },
+    {
+      question: "How do you stay updated with the latest technology trends?",
+      category: "Learning & Adaptability",
+      difficulty: "entry",
+      tags: ["learning", "technology-trends", "continuous-learning"]
+    },
+    {
+      question: "Explain the difference between REST and GraphQL APIs.",
+      category: "Technical Knowledge",
+      difficulty: "mid",
+      tags: ["apis", "web-development", "architecture"]
+    },
+    {
+      question: "How do you implement security best practices in your applications?",
+      category: "Security",
+      difficulty: "senior",
+      tags: ["security", "best-practices", "vulnerabilities"]
+    },
+    {
+      question: "Describe your experience with microservices architecture.",
+      category: "Architecture",
+      difficulty: "senior",
+      tags: ["microservices", "architecture", "distributed-systems"]
+    },
+    {
+      question: "How do you optimize application performance and handle bottlenecks?",
+      category: "Performance",
+      difficulty: "mid",
+      tags: ["performance", "optimization", "bottlenecks"]
+    },
+    {
+      question: "Explain your approach to database design and optimization.",
+      category: "Database",
+      difficulty: "mid",
+      tags: ["database", "sql", "optimization"]
+    },
+    {
+      question: "How do you handle version control and branching strategies?",
+      category: "Development Process",
+      difficulty: "entry",
+      tags: ["git", "version-control", "collaboration"]
+    },
+    {
+      question: "Describe your experience with cloud platforms like AWS or Azure.",
+      category: "Cloud Computing",
+      difficulty: "mid",
+      tags: ["cloud", "aws", "azure", "infrastructure"]
+    },
+    {
+      question: "How do you approach mobile app development and cross-platform solutions?",
+      category: "Mobile Development",
+      difficulty: "mid",
+      tags: ["mobile", "react-native", "flutter", "ios", "android"]
+    },
+    {
+      question: "Explain your understanding of DevOps practices and CI/CD pipelines.",
+      category: "DevOps",
+      difficulty: "senior",
+      tags: ["devops", "ci-cd", "automation", "deployment"]
+    },
+    {
+      question: "How do you handle data structures and algorithms in your daily work?",
+      category: "Computer Science Fundamentals",
+      difficulty: "entry",
+      tags: ["algorithms", "data-structures", "computer-science"]
+    }
+  ],
+
+  // Computer Science Major
+  'computer-science': [
+    {
+      question: "Explain the time complexity of different sorting algorithms.",
+      category: "Algorithms & Complexity",
+      difficulty: "entry",
+      tags: ["algorithms", "complexity", "sorting"]
+    },
+    {
+      question: "How do you implement a binary search tree and what are its advantages?",
+      category: "Data Structures",
+      difficulty: "mid",
+      tags: ["data-structures", "trees", "binary-search"]
+    },
+    {
+      question: "Describe the differences between object-oriented and functional programming paradigms.",
+      category: "Programming Paradigms",
+      difficulty: "mid",
+      tags: ["oop", "functional-programming", "paradigms"]
+    },
+    {
+      question: "How do you approach solving NP-complete problems in practice?",
+      category: "Complexity Theory",
+      difficulty: "senior",
+      tags: ["np-complete", "optimization", "heuristics"]
+    },
+    {
+      question: "Explain the principles of machine learning algorithms you've studied.",
+      category: "Machine Learning",
+      difficulty: "mid",
+      tags: ["machine-learning", "algorithms", "ai"]
+    },
+    {
+      question: "How do you design efficient database schemas and handle normalization?",
+      category: "Database Theory",
+      difficulty: "mid",
+      tags: ["database", "normalization", "schema-design"]
+    },
+    {
+      question: "Describe your understanding of computer networks and protocols.",
+      category: "Networking",
+      difficulty: "entry",
+      tags: ["networking", "protocols", "tcp-ip"]
+    },
+    {
+      question: "How do you approach software architecture and design patterns?",
+      category: "Software Design",
+      difficulty: "senior",
+      tags: ["architecture", "design-patterns", "software-engineering"]
+    },
+    {
+      question: "Explain the principles of operating systems and process management.",
+      category: "Operating Systems",
+      difficulty: "mid",
+      tags: ["operating-systems", "processes", "memory-management"]
+    },
+    {
+      question: "How do you handle concurrency and parallel programming challenges?",
+      category: "Concurrency",
+      difficulty: "senior",
+      tags: ["concurrency", "parallelism", "threading"]
+    }
+  ],
+
+  // Engineering (General)
+  'engineer': [
+    {
+      question: "Describe your approach to the engineering design process.",
+      category: "Design Process",
+      difficulty: "entry",
+      tags: ["design", "process", "methodology"]
+    },
+    {
+      question: "How do you ensure quality control and testing in your projects?",
+      category: "Quality Assurance",
+      difficulty: "mid",
+      tags: ["quality", "testing", "standards"]
+    },
+    {
+      question: "Explain your experience with CAD software and technical drawings.",
+      category: "Technical Skills",
+      difficulty: "entry",
+      tags: ["cad", "technical-drawings", "design"]
+    },
+    {
+      question: "How do you approach cost-benefit analysis for engineering projects?",
+      category: "Project Management",
+      difficulty: "senior",
+      tags: ["cost-analysis", "project-management", "economics"]
+    },
+    {
+      question: "Describe your experience with materials selection and testing.",
+      category: "Materials Science",
+      difficulty: "mid",
+      tags: ["materials", "testing", "properties"]
+    },
+    {
+      question: "How do you handle safety considerations in your engineering work?",
+      category: "Safety",
+      difficulty: "mid",
+      tags: ["safety", "risk-assessment", "compliance"]
+    },
+    {
+      question: "Explain your approach to troubleshooting technical problems.",
+      category: "Problem Solving",
+      difficulty: "entry",
+      tags: ["troubleshooting", "problem-solving", "analysis"]
+    },
+    {
+      question: "How do you stay updated with engineering standards and regulations?",
+      category: "Standards & Compliance",
+      difficulty: "senior",
+      tags: ["standards", "regulations", "compliance"]
+    },
+    {
+      question: "Describe your experience with project management and team leadership.",
+      category: "Leadership",
+      difficulty: "senior",
+      tags: ["leadership", "project-management", "teamwork"]
+    },
+    {
+      question: "How do you approach innovation and continuous improvement?",
+      category: "Innovation",
+      difficulty: "mid",
+      tags: ["innovation", "improvement", "creativity"]
+    }
+  ],
+
+  // Mechanical Engineering
+  'mechanical-engineer': [
+    {
+      question: "Explain your experience with thermodynamics and heat transfer.",
+      category: "Thermodynamics",
+      difficulty: "entry",
+      tags: ["thermodynamics", "heat-transfer", "energy"]
+    },
+    {
+      question: "How do you approach stress analysis and failure prevention?",
+      category: "Stress Analysis",
+      difficulty: "mid",
+      tags: ["stress-analysis", "failure", "materials"]
+    },
+    {
+      question: "Describe your experience with fluid mechanics and hydraulic systems.",
+      category: "Fluid Mechanics",
+      difficulty: "mid",
+      tags: ["fluid-mechanics", "hydraulics", "pneumatics"]
+    },
+    {
+      question: "How do you design for manufacturability and assembly?",
+      category: "Manufacturing",
+      difficulty: "senior",
+      tags: ["manufacturing", "dfm", "assembly"]
+    },
+    {
+      question: "Explain your approach to vibration analysis and control.",
+      category: "Vibration Analysis",
+      difficulty: "senior",
+      tags: ["vibration", "control", "dynamics"]
+    },
+    {
+      question: "How do you handle tolerance analysis and geometric dimensioning?",
+      category: "Tolerancing",
+      difficulty: "mid",
+      tags: ["tolerancing", "gd&t", "precision"]
+    },
+    {
+      question: "Describe your experience with finite element analysis (FEA).",
+      category: "Simulation",
+      difficulty: "mid",
+      tags: ["fea", "simulation", "analysis"]
+    },
+    {
+      question: "How do you approach machine design and component selection?",
+      category: "Machine Design",
+      difficulty: "senior",
+      tags: ["machine-design", "components", "selection"]
+    },
+    {
+      question: "Explain your understanding of control systems and automation.",
+      category: "Control Systems",
+      difficulty: "mid",
+      tags: ["control-systems", "automation", "feedback"]
+    },
+    {
+      question: "How do you ensure compliance with mechanical engineering standards?",
+      category: "Standards",
+      difficulty: "senior",
+      tags: ["standards", "asme", "compliance"]
+    }
+  ],
+
+  // Electrical Engineering
+  'electrical-engineer': [
+    {
+      question: "Explain your experience with circuit analysis and design.",
+      category: "Circuit Design",
+      difficulty: "entry",
+      tags: ["circuits", "analysis", "design"]
+    },
+    {
+      question: "How do you approach power systems and electrical distribution?",
+      category: "Power Systems",
+      difficulty: "mid",
+      tags: ["power-systems", "distribution", "electrical"]
+    },
+    {
+      question: "Describe your experience with digital signal processing.",
+      category: "Signal Processing",
+      difficulty: "mid",
+      tags: ["dsp", "signals", "processing"]
+    },
+    {
+      question: "How do you handle electromagnetic compatibility (EMC) issues?",
+      category: "EMC",
+      difficulty: "senior",
+      tags: ["emc", "interference", "compatibility"]
+    },
+    {
+      question: "Explain your approach to embedded systems programming.",
+      category: "Embedded Systems",
+      difficulty: "mid",
+      tags: ["embedded", "microcontrollers", "programming"]
+    },
+    {
+      question: "How do you design for electrical safety and protection?",
+      category: "Safety",
+      difficulty: "senior",
+      tags: ["safety", "protection", "electrical-safety"]
+    },
+    {
+      question: "Describe your experience with power electronics and converters.",
+      category: "Power Electronics",
+      difficulty: "senior",
+      tags: ["power-electronics", "converters", "inverters"]
+    },
+    {
+      question: "How do you approach control systems and feedback loops?",
+      category: "Control Systems",
+      difficulty: "mid",
+      tags: ["control-systems", "feedback", "automation"]
+    },
+    {
+      question: "Explain your understanding of telecommunications and networking.",
+      category: "Telecommunications",
+      difficulty: "mid",
+      tags: ["telecommunications", "networking", "communication"]
+    },
+    {
+      question: "How do you ensure compliance with electrical codes and standards?",
+      category: "Standards",
+      difficulty: "senior",
+      tags: ["codes", "standards", "compliance"]
+    }
+  ],
+
+  // Civil Engineering
+  'civil-engineer': [
+    {
+      question: "Explain your experience with structural analysis and design.",
+      category: "Structural Engineering",
+      difficulty: "entry",
+      tags: ["structural", "analysis", "design"]
+    },
+    {
+      question: "How do you approach geotechnical engineering and soil analysis?",
+      category: "Geotechnical",
+      difficulty: "mid",
+      tags: ["geotechnical", "soil", "foundations"]
+    },
+    {
+      question: "Describe your experience with transportation engineering and traffic flow.",
+      category: "Transportation",
+      difficulty: "mid",
+      tags: ["transportation", "traffic", "infrastructure"]
+    },
+    {
+      question: "How do you handle environmental impact assessments?",
+      category: "Environmental",
+      difficulty: "senior",
+      tags: ["environmental", "impact", "sustainability"]
+    },
+    {
+      question: "Explain your approach to water resources and hydrology.",
+      category: "Water Resources",
+      difficulty: "mid",
+      tags: ["water", "hydrology", "resources"]
+    },
+    {
+      question: "How do you ensure compliance with building codes and regulations?",
+      category: "Codes & Regulations",
+      difficulty: "senior",
+      tags: ["codes", "regulations", "compliance"]
+    },
+    {
+      question: "Describe your experience with construction management and project delivery.",
+      category: "Construction",
+      difficulty: "senior",
+      tags: ["construction", "management", "delivery"]
+    },
+    {
+      question: "How do you approach sustainable design and green building practices?",
+      category: "Sustainability",
+      difficulty: "mid",
+      tags: ["sustainability", "green-building", "environmental"]
+    },
+    {
+      question: "Explain your understanding of surveying and mapping techniques.",
+      category: "Surveying",
+      difficulty: "entry",
+      tags: ["surveying", "mapping", "measurement"]
+    },
+    {
+      question: "How do you handle risk assessment and safety in civil projects?",
+      category: "Risk Management",
+      difficulty: "senior",
+      tags: ["risk", "safety", "assessment"]
+    }
+  ],
+
+  // Data Science
+  'data-scientist': [
+    {
+      question: "Walk me through your data analysis process from raw data to insights.",
+      category: "Technical Skills",
+      difficulty: "entry",
+      tags: ["data-analysis", "process", "methodology"]
+    },
+    {
+      question: "How do you handle missing or incomplete data in your analysis?",
+      category: "Technical Skills",
+      difficulty: "mid",
+      tags: ["data-cleaning", "missing-data", "preprocessing"]
+    },
+    {
+      question: "Describe a machine learning model you built and how you validated its performance.",
+      category: "Machine Learning",
+      difficulty: "mid",
+      tags: ["machine-learning", "model-validation", "performance"]
+    },
+    {
+      question: "How do you explain complex statistical concepts to non-technical stakeholders?",
+      category: "Communication",
+      difficulty: "senior",
+      tags: ["communication", "stakeholder-management", "explanation"]
+    },
+    {
+      question: "What's your approach to feature engineering and selection?",
+      category: "Machine Learning",
+      difficulty: "mid",
+      tags: ["feature-engineering", "feature-selection", "preprocessing"]
+    },
+    {
+      question: "How do you ensure your models are fair and unbiased?",
+      category: "Ethics & Bias",
+      difficulty: "senior",
+      tags: ["ethics", "bias", "fairness", "responsible-ai"]
+    },
+    {
+      question: "Describe a time when your analysis led to a significant business impact.",
+      category: "Business Impact",
+      difficulty: "mid",
+      tags: ["business-impact", "results", "value"]
+    },
+    {
+      question: "How do you handle large datasets that don't fit in memory?",
+      category: "Technical Skills",
+      difficulty: "senior",
+      tags: ["big-data", "scalability", "performance"]
+    }
+  ],
+
+  // Product Management
+  'product-manager': [
+    {
+      question: "How do you prioritize features in a product roadmap?",
+      category: "Product Strategy",
+      difficulty: "mid",
+      tags: ["prioritization", "roadmap", "strategy"]
+    },
+    {
+      question: "Describe a time when you had to say no to a feature request.",
+      category: "Decision Making",
+      difficulty: "mid",
+      tags: ["decision-making", "stakeholder-management", "prioritization"]
+    },
+    {
+      question: "How do you gather and analyze user feedback?",
+      category: "User Research",
+      difficulty: "entry",
+      tags: ["user-research", "feedback", "analysis"]
+    },
+    {
+      question: "Walk me through your process for defining product requirements.",
+      category: "Product Strategy",
+      difficulty: "mid",
+      tags: ["requirements", "process", "documentation"]
+    },
+    {
+      question: "How do you measure product success and what metrics do you track?",
+      category: "Analytics & Metrics",
+      difficulty: "senior",
+      tags: ["metrics", "kpis", "success-measurement"]
+    },
+    {
+      question: "Describe a time when you had to pivot a product strategy.",
+      category: "Strategic Thinking",
+      difficulty: "senior",
+      tags: ["pivot", "strategy", "adaptability"]
+    },
+    {
+      question: "How do you work with engineering teams to ensure successful delivery?",
+      category: "Cross-functional Collaboration",
+      difficulty: "mid",
+      tags: ["engineering", "collaboration", "delivery"]
+    },
+    {
+      question: "What's your approach to competitive analysis?",
+      category: "Market Research",
+      difficulty: "mid",
+      tags: ["competitive-analysis", "market-research", "strategy"]
+    }
+  ],
+
+  // Marketing
+  'marketing-manager': [
+    {
+      question: "How do you develop and execute a marketing campaign?",
+      category: "Campaign Management",
+      difficulty: "mid",
+      tags: ["campaigns", "execution", "strategy"]
+    },
+    {
+      question: "Describe your experience with digital marketing channels.",
+      category: "Digital Marketing",
+      difficulty: "entry",
+      tags: ["digital-marketing", "channels", "online"]
+    },
+    {
+      question: "How do you measure the ROI of your marketing efforts?",
+      category: "Analytics & ROI",
+      difficulty: "mid",
+      tags: ["roi", "measurement", "analytics"]
+    },
+    {
+      question: "Tell me about a successful marketing campaign you led.",
+      category: "Results & Impact",
+      difficulty: "mid",
+      tags: ["success", "campaigns", "leadership"]
+    },
+    {
+      question: "How do you approach market research and customer segmentation?",
+      category: "Market Research",
+      difficulty: "senior",
+      tags: ["market-research", "segmentation", "analysis"]
+    },
+    {
+      question: "Describe your experience with content marketing and SEO.",
+      category: "Content & SEO",
+      difficulty: "mid",
+      tags: ["content-marketing", "seo", "content-strategy"]
+    },
+    {
+      question: "How do you manage marketing budgets and allocate resources?",
+      category: "Budget Management",
+      difficulty: "senior",
+      tags: ["budget", "resource-allocation", "management"]
+    },
+    {
+      question: "What's your approach to brand positioning and messaging?",
+      category: "Brand Strategy",
+      difficulty: "senior",
+      tags: ["branding", "positioning", "messaging"]
+    }
+  ],
+
+  // Sales
+  'sales-representative': [
+    {
+      question: "Walk me through your sales process from lead to close.",
+      category: "Sales Process",
+      difficulty: "entry",
+      tags: ["sales-process", "pipeline", "methodology"]
+    },
+    {
+      question: "How do you handle objections from potential customers?",
+      category: "Objection Handling",
+      difficulty: "mid",
+      tags: ["objections", "customer-relations", "persuasion"]
+    },
+    {
+      question: "Describe a time when you exceeded your sales targets.",
+      category: "Results & Performance",
+      difficulty: "mid",
+      tags: ["targets", "performance", "achievement"]
+    },
+    {
+      question: "How do you build and maintain relationships with clients?",
+      category: "Relationship Building",
+      difficulty: "entry",
+      tags: ["relationships", "clients", "networking"]
+    },
+    {
+      question: "What's your approach to cold calling and prospecting?",
+      category: "Prospecting",
+      difficulty: "entry",
+      tags: ["cold-calling", "prospecting", "outreach"]
+    },
+    {
+      question: "How do you qualify leads and determine their potential?",
+      category: "Lead Qualification",
+      difficulty: "mid",
+      tags: ["qualification", "leads", "assessment"]
+    },
+    {
+      question: "Describe a time when you lost a deal and what you learned.",
+      category: "Learning & Growth",
+      difficulty: "mid",
+      tags: ["failure", "learning", "improvement"]
+    },
+    {
+      question: "How do you use CRM systems to manage your sales activities?",
+      category: "Technology & Tools",
+      difficulty: "entry",
+      tags: ["crm", "technology", "organization"]
+    }
+  ],
+
+  // Finance
+  'financial-analyst': [
+    {
+      question: "How do you approach financial modeling and forecasting?",
+      category: "Financial Modeling",
+      difficulty: "mid",
+      tags: ["modeling", "forecasting", "analysis"]
+    },
+    {
+      question: "Describe your experience with financial statement analysis.",
+      category: "Financial Analysis",
+      difficulty: "entry",
+      tags: ["financial-statements", "analysis", "accounting"]
+    },
+    {
+      question: "How do you assess investment opportunities and risks?",
+      category: "Investment Analysis",
+      difficulty: "senior",
+      tags: ["investment", "risk-assessment", "valuation"]
+    },
+    {
+      question: "What's your approach to budgeting and variance analysis?",
+      category: "Budgeting",
+      difficulty: "mid",
+      tags: ["budgeting", "variance", "planning"]
+    },
+    {
+      question: "How do you present complex financial data to non-financial stakeholders?",
+      category: "Communication",
+      difficulty: "senior",
+      tags: ["communication", "presentation", "stakeholders"]
+    },
+    {
+      question: "Describe your experience with regulatory compliance in finance.",
+      category: "Compliance",
+      difficulty: "senior",
+      tags: ["compliance", "regulations", "risk"]
+    },
+    {
+      question: "How do you stay updated with market trends and economic indicators?",
+      category: "Market Knowledge",
+      difficulty: "mid",
+      tags: ["market-trends", "economics", "research"]
+    }
+  ],
+
+  // Human Resources
+  'hr-manager': [
+    {
+      question: "How do you approach talent acquisition and recruitment?",
+      category: "Talent Acquisition",
+      difficulty: "mid",
+      tags: ["recruitment", "talent", "hiring"]
+    },
+    {
+      question: "Describe your experience with employee relations and conflict resolution.",
+      category: "Employee Relations",
+      difficulty: "senior",
+      tags: ["employee-relations", "conflict-resolution", "mediation"]
+    },
+    {
+      question: "How do you develop and implement HR policies?",
+      category: "Policy Development",
+      difficulty: "senior",
+      tags: ["policies", "implementation", "governance"]
+    },
+    {
+      question: "What's your approach to performance management and reviews?",
+      category: "Performance Management",
+      difficulty: "mid",
+      tags: ["performance", "reviews", "management"]
+    },
+    {
+      question: "How do you handle sensitive employee situations and investigations?",
+      category: "Employee Relations",
+      difficulty: "senior",
+      tags: ["investigations", "sensitive-situations", "discretion"]
+    },
+    {
+      question: "Describe your experience with compensation and benefits administration.",
+      category: "Compensation & Benefits",
+      difficulty: "mid",
+      tags: ["compensation", "benefits", "administration"]
+    },
+    {
+      question: "How do you ensure compliance with employment laws and regulations?",
+      category: "Compliance",
+      difficulty: "senior",
+      tags: ["compliance", "employment-law", "regulations"]
+    }
+  ],
+
+  // Healthcare
+  'nurse': [
+    {
+      question: "How do you handle high-stress situations in a healthcare setting?",
+      category: "Stress Management",
+      difficulty: "entry",
+      tags: ["stress", "healthcare", "crisis-management"]
+    },
+    {
+      question: "Describe your approach to patient care and communication.",
+      category: "Patient Care",
+      difficulty: "entry",
+      tags: ["patient-care", "communication", "empathy"]
+    },
+    {
+      question: "How do you ensure patient safety and prevent medical errors?",
+      category: "Patient Safety",
+      difficulty: "mid",
+      tags: ["safety", "medical-errors", "prevention"]
+    },
+    {
+      question: "What's your experience with electronic health records and documentation?",
+      category: "Technology",
+      difficulty: "entry",
+      tags: ["ehr", "documentation", "technology"]
+    },
+    {
+      question: "How do you work effectively with doctors and other healthcare professionals?",
+      category: "Teamwork",
+      difficulty: "mid",
+      tags: ["teamwork", "collaboration", "interdisciplinary"]
+    },
+    {
+      question: "Describe a time when you had to advocate for a patient.",
+      category: "Patient Advocacy",
+      difficulty: "mid",
+      tags: ["advocacy", "patient-rights", "ethics"]
+    }
+  ],
+
+  // Education
+  'teacher-remove': [
+    {
+      question: "How do you differentiate instruction to meet diverse learning needs?",
+      category: "Teaching Methods",
+      difficulty: "mid",
+      tags: ["differentiation", "learning-needs", "inclusive-education"]
+    },
+    {
+      question: "Describe your approach to classroom management and discipline.",
+      category: "Classroom Management",
+      difficulty: "entry",
+      tags: ["classroom-management", "discipline", "behavior"]
+    },
+    {
+      question: "How do you assess student learning and provide meaningful feedback?",
+      category: "Assessment",
+      difficulty: "mid",
+      tags: ["assessment", "feedback", "evaluation"]
+    },
+    {
+      question: "What's your experience with technology integration in the classroom?",
+      category: "Technology Integration",
+      difficulty: "entry",
+      tags: ["technology", "digital-learning", "innovation"]
+    },
+    {
+      question: "How do you engage parents and families in their child's education?",
+      category: "Parent Engagement",
+      difficulty: "mid",
+      tags: ["parent-engagement", "communication", "partnership"]
+    },
+    {
+      question: "Describe a time when you had to adapt your teaching for a challenging situation.",
+      category: "Adaptability",
+      difficulty: "mid",
+      tags: ["adaptability", "challenges", "flexibility"]
+    }
+  ],
+
+  // General Business
+  'business-analyst': [
+    {
+      question: "How do you gather and analyze business requirements?",
+      category: "Requirements Analysis",
+      difficulty: "entry",
+      tags: ["requirements", "analysis", "gathering"]
+    },
+    {
+      question: "Describe your experience with process improvement and optimization.",
+      category: "Process Improvement",
+      difficulty: "mid",
+      tags: ["process-improvement", "optimization", "efficiency"]
+    },
+    {
+      question: "How do you facilitate meetings and workshops with stakeholders?",
+      category: "Facilitation",
+      difficulty: "mid",
+      tags: ["facilitation", "meetings", "stakeholders"]
+    },
+    {
+      question: "What's your approach to data analysis and reporting?",
+      category: "Data Analysis",
+      difficulty: "mid",
+      tags: ["data-analysis", "reporting", "insights"]
+    },
+    {
+      question: "How do you ensure project deliverables meet business objectives?",
+      category: "Project Management",
+      difficulty: "senior",
+      tags: ["project-management", "deliverables", "objectives"]
+    }
+  ],
+
+  // Customer Service
+  'customer-service-representative': [
+    {
+      question: "How do you handle difficult or angry customers?",
+      category: "Customer Relations",
+      difficulty: "entry",
+      tags: ["difficult-customers", "conflict-resolution", "patience"]
+    },
+    {
+      question: "Describe your approach to resolving customer complaints.",
+      category: "Problem Solving",
+      difficulty: "entry",
+      tags: ["complaints", "problem-solving", "resolution"]
+    },
+    {
+      question: "How do you ensure customer satisfaction while following company policies?",
+      category: "Policy & Satisfaction",
+      difficulty: "mid",
+      tags: ["customer-satisfaction", "policies", "balance"]
+    },
+    {
+      question: "What's your experience with CRM systems and customer data management?",
+      category: "Technology",
+      difficulty: "entry",
+      tags: ["crm", "data-management", "technology"]
+    },
+    {
+      question: "How do you upsell or cross-sell products to customers?",
+      category: "Sales Skills",
+      difficulty: "mid",
+      tags: ["upselling", "cross-selling", "sales"]
+    }
+  ],
+
+  // Operations
+  'operations-manager': [
+    {
+      question: "How do you optimize operational processes for efficiency?",
+      category: "Process Optimization",
+      difficulty: "senior",
+      tags: ["optimization", "efficiency", "processes"]
+    },
+    {
+      question: "Describe your experience with supply chain management.",
+      category: "Supply Chain",
+      difficulty: "mid",
+      tags: ["supply-chain", "logistics", "management"]
+    },
+    {
+      question: "How do you ensure quality control in your operations?",
+      category: "Quality Control",
+      difficulty: "mid",
+      tags: ["quality-control", "standards", "monitoring"]
+    },
+    {
+      question: "What's your approach to managing operational budgets and costs?",
+      category: "Budget Management",
+      difficulty: "senior",
+      tags: ["budget", "cost-management", "financial-control"]
+    },
+    {
+      question: "How do you handle operational crises or emergencies?",
+      category: "Crisis Management",
+      difficulty: "senior",
+      tags: ["crisis-management", "emergencies", "leadership"]
+    }
+  ],
+
+  // Business Administration
+  'business-administrator': [
+    {
+      question: "How do you approach strategic planning and goal setting?",
+      category: "Strategic Planning",
+      difficulty: "senior",
+      tags: ["strategy", "planning", "goals"]
+    },
+    {
+      question: "Describe your experience with organizational development and change management.",
+      category: "Organizational Development",
+      difficulty: "senior",
+      tags: ["organizational-development", "change-management", "transformation"]
+    },
+    {
+      question: "How do you analyze market trends and competitive positioning?",
+      category: "Market Analysis",
+      difficulty: "mid",
+      tags: ["market-analysis", "competitive-analysis", "trends"]
+    },
+    {
+      question: "What's your approach to stakeholder management and communication?",
+      category: "Stakeholder Management",
+      difficulty: "senior",
+      tags: ["stakeholders", "communication", "management"]
+    },
+    {
+      question: "How do you ensure operational efficiency and cost optimization?",
+      category: "Operations",
+      difficulty: "mid",
+      tags: ["efficiency", "cost-optimization", "operations"]
+    },
+    {
+      question: "Describe your experience with business process improvement methodologies.",
+      category: "Process Improvement",
+      difficulty: "mid",
+      tags: ["process-improvement", "methodologies", "optimization"]
+    },
+    {
+      question: "How do you handle crisis management and business continuity planning?",
+      category: "Crisis Management",
+      difficulty: "senior",
+      tags: ["crisis-management", "business-continuity", "risk"]
+    },
+    {
+      question: "What's your approach to team building and organizational culture?",
+      category: "Leadership",
+      difficulty: "senior",
+      tags: ["team-building", "culture", "leadership"]
+    }
+  ],
+
+  // Accounting
+  'accountant': [
+    {
+      question: "How do you ensure accuracy and compliance in financial reporting?",
+      category: "Financial Reporting",
+      difficulty: "entry",
+      tags: ["financial-reporting", "compliance", "accuracy"]
+    },
+    {
+      question: "Describe your experience with tax preparation and planning.",
+      category: "Taxation",
+      difficulty: "mid",
+      tags: ["tax", "planning", "preparation"]
+    },
+    {
+      question: "How do you approach internal controls and risk assessment?",
+      category: "Internal Controls",
+      difficulty: "senior",
+      tags: ["internal-controls", "risk-assessment", "compliance"]
+    },
+    {
+      question: "What's your experience with auditing and assurance services?",
+      category: "Auditing",
+      difficulty: "mid",
+      tags: ["auditing", "assurance", "compliance"]
+    },
+    {
+      question: "How do you handle cost accounting and budgeting processes?",
+      category: "Cost Accounting",
+      difficulty: "mid",
+      tags: ["cost-accounting", "budgeting", "analysis"]
+    },
+    {
+      question: "Describe your approach to financial analysis and variance reporting.",
+      category: "Financial Analysis",
+      difficulty: "mid",
+      tags: ["financial-analysis", "variance", "reporting"]
+    },
+    {
+      question: "How do you stay updated with accounting standards and regulations?",
+      category: "Standards & Compliance",
+      difficulty: "senior",
+      tags: ["standards", "regulations", "compliance"]
+    },
+    {
+      question: "What's your experience with accounting software and ERP systems?",
+      category: "Technology",
+      difficulty: "entry",
+      tags: ["accounting-software", "erp", "technology"]
+    }
+  ],
+
+  // Psychology
+  'psychologist': [
+    {
+      question: "How do you approach client assessment and diagnosis?",
+      category: "Assessment",
+      difficulty: "entry",
+      tags: ["assessment", "diagnosis", "evaluation"]
+    },
+    {
+      question: "Describe your experience with different therapeutic approaches and modalities.",
+      category: "Therapeutic Approaches",
+      difficulty: "mid",
+      tags: ["therapy", "modalities", "approaches"]
+    },
+    {
+      question: "How do you handle ethical considerations in psychological practice?",
+      category: "Ethics",
+      difficulty: "senior",
+      tags: ["ethics", "professional-standards", "practice"]
+    },
+    {
+      question: "What's your approach to crisis intervention and emergency situations?",
+      category: "Crisis Intervention",
+      difficulty: "senior",
+      tags: ["crisis-intervention", "emergency", "safety"]
+    },
+    {
+      question: "How do you maintain professional boundaries with clients?",
+      category: "Professional Practice",
+      difficulty: "mid",
+      tags: ["boundaries", "professional-practice", "ethics"]
+    },
+    {
+      question: "Describe your experience with psychological testing and assessment tools.",
+      category: "Testing & Assessment",
+      difficulty: "mid",
+      tags: ["testing", "assessment-tools", "evaluation"]
+    },
+    {
+      question: "How do you approach cultural competency and diversity in practice?",
+      category: "Cultural Competency",
+      difficulty: "senior",
+      tags: ["cultural-competency", "diversity", "inclusion"]
+    },
+    {
+      question: "What's your experience with research methods and evidence-based practice?",
+      category: "Research",
+      difficulty: "mid",
+      tags: ["research", "evidence-based", "methodology"]
+    }
+  ],
+
+  // Medicine
+  'doctor': [
+    {
+      question: "How do you approach differential diagnosis and clinical reasoning?",
+      category: "Clinical Reasoning",
+      difficulty: "entry",
+      tags: ["diagnosis", "clinical-reasoning", "medical-knowledge"]
+    },
+    {
+      question: "Describe your experience with patient communication and informed consent.",
+      category: "Communication",
+      difficulty: "entry",
+      tags: ["communication", "informed-consent", "patient-relations"]
+    },
+    {
+      question: "How do you handle medical emergencies and critical care situations?",
+      category: "Emergency Medicine",
+      difficulty: "mid",
+      tags: ["emergencies", "critical-care", "crisis-management"]
+    },
+    {
+      question: "What's your approach to evidence-based medicine and clinical guidelines?",
+      category: "Evidence-Based Medicine",
+      difficulty: "mid",
+      tags: ["evidence-based", "clinical-guidelines", "research"]
+    },
+    {
+      question: "How do you manage complex cases and multidisciplinary care?",
+      category: "Complex Care",
+      difficulty: "senior",
+      tags: ["complex-cases", "multidisciplinary", "coordination"]
+    },
+    {
+      question: "Describe your experience with medical ethics and end-of-life care.",
+      category: "Medical Ethics",
+      difficulty: "senior",
+      tags: ["ethics", "end-of-life", "palliative-care"]
+    },
+    {
+      question: "How do you stay updated with medical advances and continuing education?",
+      category: "Continuing Education",
+      difficulty: "mid",
+      tags: ["continuing-education", "medical-advances", "learning"]
+    },
+    {
+      question: "What's your approach to quality improvement and patient safety?",
+      category: "Quality Improvement",
+      difficulty: "senior",
+      tags: ["quality-improvement", "patient-safety", "outcomes"]
+    }
+  ],
+
+  // Education
+  'teacher-remove': [
+    {
+      question: "How do you differentiate instruction to meet diverse learning needs?",
+      category: "Teaching Methods",
+      difficulty: "mid",
+      tags: ["differentiation", "learning-needs", "inclusive-education"]
+    },
+    {
+      question: "Describe your approach to classroom management and discipline.",
+      category: "Classroom Management",
+      difficulty: "entry",
+      tags: ["classroom-management", "discipline", "behavior"]
+    },
+    {
+      question: "How do you assess student learning and provide meaningful feedback?",
+      category: "Assessment",
+      difficulty: "mid",
+      tags: ["assessment", "feedback", "evaluation"]
+    },
+    {
+      question: "What's your experience with technology integration in the classroom?",
+      category: "Technology Integration",
+      difficulty: "entry",
+      tags: ["technology", "digital-learning", "innovation"]
+    },
+    {
+      question: "How do you engage parents and families in their child's education?",
+      category: "Parent Engagement",
+      difficulty: "mid",
+      tags: ["parent-engagement", "communication", "partnership"]
+    },
+    {
+      question: "Describe a time when you had to adapt your teaching for a challenging situation.",
+      category: "Adaptability",
+      difficulty: "mid",
+      tags: ["adaptability", "challenges", "flexibility"]
+    },
+    {
+      question: "How do you create an inclusive and supportive learning environment?",
+      category: "Inclusive Education",
+      difficulty: "mid",
+      tags: ["inclusive-education", "support", "environment"]
+    },
+    {
+      question: "What's your approach to lesson planning and curriculum development?",
+      category: "Curriculum",
+      difficulty: "entry",
+      tags: ["lesson-planning", "curriculum", "instructional-design"]
+    },
+    {
+      question: "How do you handle students with special needs or learning disabilities?",
+      category: "Special Education",
+      difficulty: "mid",
+      tags: ["special-needs", "learning-disabilities", "accommodations"]
+    },
+    {
+      question: "Describe your experience with professional development and collaboration.",
+      category: "Professional Development",
+      difficulty: "mid",
+      tags: ["professional-development", "collaboration", "growth"]
+    }
+  ],
+
+  // Communications
+  'communications-specialist': [
+    {
+      question: "How do you develop and execute communication strategies?",
+      category: "Strategy",
+      difficulty: "mid",
+      tags: ["strategy", "execution", "planning"]
+    },
+    {
+      question: "Describe your experience with content creation and storytelling.",
+      category: "Content Creation",
+      difficulty: "entry",
+      tags: ["content", "storytelling", "creation"]
+    },
+    {
+      question: "How do you handle crisis communication and reputation management?",
+      category: "Crisis Communication",
+      difficulty: "senior",
+      tags: ["crisis", "reputation", "management"]
+    },
+    {
+      question: "What's your approach to media relations and public relations?",
+      category: "Media Relations",
+      difficulty: "mid",
+      tags: ["media-relations", "public-relations", "outreach"]
+    },
+    {
+      question: "How do you measure the effectiveness of communication campaigns?",
+      category: "Measurement",
+      difficulty: "mid",
+      tags: ["measurement", "effectiveness", "analytics"]
+    },
+    {
+      question: "Describe your experience with social media and digital communications.",
+      category: "Digital Communications",
+      difficulty: "entry",
+      tags: ["social-media", "digital", "online"]
+    },
+    {
+      question: "How do you ensure brand consistency across all communication channels?",
+      category: "Brand Management",
+      difficulty: "senior",
+      tags: ["brand-consistency", "channels", "management"]
+    },
+    {
+      question: "What's your approach to internal communications and employee engagement?",
+      category: "Internal Communications",
+      difficulty: "mid",
+      tags: ["internal-communications", "employee-engagement", "culture"]
+    }
+  ],
+
+  // Graphic Design
+  'graphic-designer': [
+    {
+      question: "How do you approach the creative design process from concept to completion?",
+      category: "Design Process",
+      difficulty: "entry",
+      tags: ["design-process", "creativity", "methodology"]
+    },
+    {
+      question: "Describe your experience with different design software and tools.",
+      category: "Technical Skills",
+      difficulty: "entry",
+      tags: ["software", "tools", "technical-skills"]
+    },
+    {
+      question: "How do you ensure your designs align with brand guidelines and client requirements?",
+      category: "Brand Alignment",
+      difficulty: "mid",
+      tags: ["brand-guidelines", "client-requirements", "alignment"]
+    },
+    {
+      question: "What's your approach to typography and visual hierarchy?",
+      category: "Typography",
+      difficulty: "mid",
+      tags: ["typography", "visual-hierarchy", "design-principles"]
+    },
+    {
+      question: "How do you handle feedback and revisions from clients?",
+      category: "Client Relations",
+      difficulty: "entry",
+      tags: ["feedback", "revisions", "client-relations"]
+    },
+    {
+      question: "Describe your experience with print vs. digital design considerations.",
+      category: "Design Formats",
+      difficulty: "mid",
+      tags: ["print", "digital", "formats"]
+    },
+    {
+      question: "How do you stay updated with design trends and industry best practices?",
+      category: "Industry Knowledge",
+      difficulty: "entry",
+      tags: ["trends", "best-practices", "industry-knowledge"]
+    },
+    {
+      question: "What's your approach to color theory and visual composition?",
+      category: "Design Theory",
+      difficulty: "mid",
+      tags: ["color-theory", "composition", "design-theory"]
+    }
+  ],
+
+  // Marketing
+  'marketing-manager': [
+    {
+      question: "How do you develop and execute a marketing campaign?",
+      category: "Campaign Management",
+      difficulty: "mid",
+      tags: ["campaigns", "execution", "strategy"]
+    },
+    {
+      question: "Describe your experience with digital marketing channels.",
+      category: "Digital Marketing",
+      difficulty: "entry",
+      tags: ["digital-marketing", "channels", "online"]
+    },
+    {
+      question: "How do you measure the ROI of your marketing efforts?",
+      category: "Analytics & ROI",
+      difficulty: "mid",
+      tags: ["roi", "measurement", "analytics"]
+    },
+    {
+      question: "Tell me about a successful marketing campaign you led.",
+      category: "Results & Impact",
+      difficulty: "mid",
+      tags: ["success", "campaigns", "leadership"]
+    },
+    {
+      question: "How do you approach market research and customer segmentation?",
+      category: "Market Research",
+      difficulty: "senior",
+      tags: ["market-research", "segmentation", "analysis"]
+    },
+    {
+      question: "Describe your experience with content marketing and SEO.",
+      category: "Content & SEO",
+      difficulty: "mid",
+      tags: ["content-marketing", "seo", "content-strategy"]
+    },
+    {
+      question: "How do you manage marketing budgets and allocate resources?",
+      category: "Budget Management",
+      difficulty: "senior",
+      tags: ["budget", "resource-allocation", "management"]
+    },
+    {
+      question: "What's your approach to brand positioning and messaging?",
+      category: "Brand Strategy",
+      difficulty: "senior",
+      tags: ["branding", "positioning", "messaging"]
+    },
+    {
+      question: "How do you handle social media marketing and community management?",
+      category: "Social Media",
+      difficulty: "mid",
+      tags: ["social-media", "community-management", "engagement"]
+    },
+    {
+      question: "Describe your experience with email marketing and automation.",
+      category: "Email Marketing",
+      difficulty: "mid",
+      tags: ["email-marketing", "automation", "campaigns"]
+    }
+  ]
+};
+
+// Function to get random questions for a specific position and experience level
+export function getRandomQuestions(
+  position: string, 
+  experienceLevel: string, 
+  count: number = 5
+): QuestionData[] {
+  // Normalize position to match our database keys
+  const normalizedPosition = position.toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '');
+  
+  // Try to find exact match first
+  let questions = QUESTION_DATABASE[normalizedPosition];
+  
+  // If no exact match, try to find partial matches
+  if (!questions) {
+    const possibleMatches = Object.keys(QUESTION_DATABASE).filter(key => 
+      key.includes(normalizedPosition) || normalizedPosition.includes(key)
+    );
+    
+    if (possibleMatches.length > 0) {
+      questions = QUESTION_DATABASE[possibleMatches[0]];
+    }
+  }
+  
+  // Fallback to general questions if no specific match
+  if (!questions) {
+    questions = [
+      ...QUESTION_DATABASE['software-engineer'],
+      ...QUESTION_DATABASE['product-manager'],
+      ...QUESTION_DATABASE['business-analyst']
+    ];
+  }
+  
+  // Filter by experience level
+  const filteredQuestions = questions.filter(q => q.difficulty === experienceLevel);
+  
+  // If not enough questions for the experience level, include all levels
+  const finalQuestions = filteredQuestions.length >= count ? filteredQuestions : questions;
+  
+  // Shuffle and return requested number
+  const shuffled = [...finalQuestions].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, count);
+}
+
+// General interview questions (not job-specific)
+const GENERAL_QUESTIONS: QuestionData[] = [
+  {
+    question: "Tell me about yourself.",
+    category: "General",
+    difficulty: "entry",
+    tags: ["introduction", "background", "general"]
+  },
+  {
+    question: "What are your greatest strengths?",
+    category: "General",
+    difficulty: "entry",
+    tags: ["strengths", "self-assessment", "general"]
+  },
+  {
+    question: "What is your greatest weakness?",
+    category: "General",
+    difficulty: "entry",
+    tags: ["weaknesses", "self-awareness", "general"]
+  },
+  {
+    question: "Why do you want to work here?",
+    category: "General",
+    difficulty: "entry",
+    tags: ["motivation", "company", "general"]
+  },
+  {
+    question: "Where do you see yourself in 5 years?",
+    category: "General",
+    difficulty: "entry",
+    tags: ["career-goals", "future", "general"]
+  },
+  {
+    question: "Why are you leaving your current job?",
+    category: "General",
+    difficulty: "entry",
+    tags: ["transition", "motivation", "general"]
+  },
+  {
+    question: "Describe a time when you had to work under pressure.",
+    category: "General",
+    difficulty: "mid",
+    tags: ["pressure", "situational", "general"]
+  },
+  {
+    question: "Tell me about a time you failed and what you learned from it.",
+    category: "General",
+    difficulty: "mid",
+    tags: ["failure", "learning", "general"]
+  },
+  {
+    question: "How do you handle stress?",
+    category: "General",
+    difficulty: "entry",
+    tags: ["stress-management", "personal", "general"]
+  },
+  {
+    question: "What motivates you?",
+    category: "General",
+    difficulty: "entry",
+    tags: ["motivation", "personal", "general"]
+  }
+];
+
+// Enhanced function to get questions based on experience level requirements
+export function getRandomQuestionsByLevel(
+  position: string, 
+  experienceLevel: 'entry' | 'mid' | 'senior' | 'executive', 
+  count: number = 5,
+  previousQuestions: string[] = []
+): QuestionData[] {
+  const normalizedPosition = position.toLowerCase().replace(/\s+/g, '-');
+  
+  // Get job-specific questions
+  let jobSpecificQuestions = QUESTION_DATABASE[normalizedPosition];
+  
+  // If no exact match, try to find partial matches
+  if (!jobSpecificQuestions) {
+    const possibleMatches = Object.keys(QUESTION_DATABASE).filter(key => 
+      key.includes(normalizedPosition) || normalizedPosition.includes(key)
+    );
+    
+    if (possibleMatches.length > 0) {
+      jobSpecificQuestions = QUESTION_DATABASE[possibleMatches[0]];
+    }
+  }
+  
+  // Fallback to general questions if no specific match
+  if (!jobSpecificQuestions) {
+    jobSpecificQuestions = [
+      ...QUESTION_DATABASE['software-engineer'],
+      ...QUESTION_DATABASE['product-manager'],
+      ...QUESTION_DATABASE['business-analyst']
+    ];
+  }
+  
+  // Filter job-specific questions by experience level
+  const filteredJobQuestions = jobSpecificQuestions.filter(q => q.difficulty === experienceLevel);
+  
+  // If not enough job-specific questions for the level, include all levels
+  const finalJobQuestions = filteredJobQuestions.length >= 4 ? filteredJobQuestions : jobSpecificQuestions;
+  
+  // Filter out previously asked questions
+  const availableJobQuestions = finalJobQuestions.filter(q => 
+    !previousQuestions.includes(q.question)
+  );
+  const availableGeneralQuestions = GENERAL_QUESTIONS.filter(q => 
+    !previousQuestions.includes(q.question)
+  );
+  
+  // Shuffle both question sets
+  const shuffledGeneral = [...availableGeneralQuestions].sort(() => Math.random() - 0.5);
+  const shuffledJob = [...availableJobQuestions].sort(() => Math.random() - 0.5);
+  
+  let selectedQuestions: QuestionData[] = [];
+  
+  // Select questions based on experience level requirements
+  if (experienceLevel === 'entry') {
+    // Entry level: 3 normal + 2 job-related
+    selectedQuestions = [
+      ...shuffledGeneral.slice(0, 3),
+      ...shuffledJob.slice(0, 2)
+    ];
+  } else if (experienceLevel === 'mid') {
+    // Mid level: 2 normal + 3 job-related
+    selectedQuestions = [
+      ...shuffledGeneral.slice(0, 2),
+      ...shuffledJob.slice(0, 3)
+    ];
+  } else if (experienceLevel === 'senior' || experienceLevel === 'executive') {
+    // Senior/Executive: 1 normal + 4 job-related
+    selectedQuestions = [
+      ...shuffledGeneral.slice(0, 1),
+      ...shuffledJob.slice(0, 4)
+    ];
+  }
+  
+  // If we don't have enough questions, fill with available ones
+  if (selectedQuestions.length < count) {
+    const remaining = count - selectedQuestions.length;
+    const allQuestions = [...shuffledGeneral, ...shuffledJob];
+    const additionalQuestions = allQuestions.filter(q => 
+      !selectedQuestions.some(selected => selected.question === q.question)
+    );
+    selectedQuestions = [
+      ...selectedQuestions,
+      ...additionalQuestions.slice(0, remaining)
+    ];
+  }
+  
+  return selectedQuestions.slice(0, count);
+}
+
+// Function to get all available positions
+export function getAvailablePositions(): string[] {
+  return Object.keys(QUESTION_DATABASE).map(key => 
+    key.split('-').map(word => 
+      word.charAt(0).toUpperCase() + word.slice(1)
+    ).join(' ')
+  );
+}

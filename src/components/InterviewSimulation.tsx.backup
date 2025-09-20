@@ -1,0 +1,247 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+
+interface SimulationStep {
+  id: string;
+  type: 'question' | 'answer' | 'feedback';
+  content: string;
+  duration: number;
+}
+
+const simulationData: SimulationStep[] = [
+  {
+    id: '1',
+    type: 'question',
+    content: 'Tell me about yourself and why you\'re interested in this role.',
+    duration: 3000
+  },
+  {
+    id: '2',
+    type: 'answer',
+    content: 'I\'m a passionate software engineer with 3 years of experience building scalable web applications. I\'m excited about this role because it combines my technical skills with opportunities to mentor junior developers.',
+    duration: 4000
+  },
+  {
+    id: '3',
+    type: 'feedback',
+    content: 'Great introduction! You clearly articulated your background and motivation.',
+    duration: 2000
+  },
+  {
+    id: '4',
+    type: 'question',
+    content: 'Describe a challenging project you worked on and how you overcame obstacles.',
+    duration: 3000
+  },
+  {
+    id: '5',
+    type: 'answer',
+    content: 'I led the migration of our legacy system to microservices. The main challenge was ensuring zero downtime. I solved it by implementing a blue-green deployment strategy and thorough testing.',
+    duration: 4000
+  },
+  {
+    id: '6',
+    type: 'feedback',
+    content: 'Excellent technical detail and problem-solving approach. Well done!',
+    duration: 2000
+  },
+  {
+    id: '7',
+    type: 'question',
+    content: 'How do you stay updated with the latest technologies?',
+    duration: 3000
+  },
+  {
+    id: '8',
+    type: 'answer',
+    content: 'I follow tech blogs, participate in developer communities, and work on side projects. I also attend conferences and contribute to open source projects.',
+    duration: 4000
+  },
+  {
+    id: '9',
+    type: 'feedback',
+    content: 'Strong commitment to continuous learning. Keep it up!',
+    duration: 2000
+  }
+];
+
+export default function InterviewSimulation() {
+  const [currentStep, setCurrentStep] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [typingText, setTypingText] = useState('');
+  const [showScores, setShowScores] = useState(false);
+  const [scores, setScores] = useState({ relevance: 8, clarity: 7, confidence: 9 });
+  const [currentQuestion, setCurrentQuestion] = useState('');
+
+  const currentSimulation = simulationData[currentStep];
+
+  // Auto-advance simulation
+  useEffect(() => {
+    if (!isPlaying) return;
+
+    const timer = setTimeout(() => {
+      if (currentSimulation.type === 'question') {
+        // Type out the question
+        typeText(currentSimulation.content, () => {
+          setCurrentQuestion(currentSimulation.content);
+          setTimeout(() => {
+            setCurrentStep((prev) => (prev + 1) % simulationData.length);
+            setTypingText('');
+          }, 1000);
+        });
+      } else if (currentSimulation.type === 'answer') {
+        // Show recording animation, then type answer
+        setTimeout(() => {
+          typeText(currentSimulation.content, () => {
+            setTimeout(() => {
+              setCurrentStep((prev) => (prev + 1) % simulationData.length);
+              setTypingText('');
+            }, 1000);
+          });
+        }, 1000);
+      } else if (currentSimulation.type === 'feedback') {
+        // Show feedback with scores
+        setShowScores(true);
+        // Randomize scores slightly for realism
+        setScores({
+          relevance: 7 + Math.floor(Math.random() * 3),
+          clarity: 6 + Math.floor(Math.random() * 4),
+          confidence: 8 + Math.floor(Math.random() * 2)
+        });
+        setTimeout(() => {
+          setCurrentStep((prev) => (prev + 1) % simulationData.length);
+          setShowScores(false);
+        }, currentSimulation.duration);
+      }
+    }, currentSimulation.type === 'question' ? 0 : 500);
+
+    return () => clearTimeout(timer);
+  }, [currentStep, isPlaying, currentSimulation]);
+
+  const typeText = (text: string, onComplete: () => void) => {
+    let index = 0;
+    const interval = setInterval(() => {
+      if (index < text.length) {
+        setTypingText(text.slice(0, index + 1));
+        index++;
+      } else {
+        clearInterval(interval);
+        onComplete();
+      }
+    }, 30);
+  };
+
+  return (
+    <div className="relative w-full max-w-5xl mx-auto">
+      {/* Laptop Mockup */}
+      <div className="bg-gray-800 rounded-t-3xl p-6 shadow-2xl">
+        {/* Screen */}
+        <div className="bg-gray-900 rounded-t-2xl overflow-hidden">
+          {/* Screen Header */}
+          <div className="bg-gray-800 px-8 py-4 flex items-center justify-between border-b border-gray-700">
+            <div className="flex items-center space-x-3">
+              <div className="w-4 h-4 bg-red-500 rounded-full"></div>
+              <div className="w-4 h-4 bg-yellow-500 rounded-full"></div>
+              <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+            </div>
+            <div className="text-gray-400 text-base font-mono">AI Interview Coach</div>
+            <div className="w-20"></div>
+          </div>
+          
+          {/* Screen Content */}
+          <div className="bg-gray-50 p-10 min-h-[400px]">
+            <div className="space-y-4">
+              {/* Question Card - Always Visible */}
+              {(currentSimulation.type === 'question' || currentQuestion) && (
+                <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200 animate-fadeIn">
+                  <div className="flex items-center mb-3">
+                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                      <span className="text-blue-600 font-bold text-sm">Q</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 text-sm">Question {Math.floor(currentStep / 3) + 1} of 5</h3>
+                      <p className="text-xs text-gray-500">
+                        {currentStep === 0 ? 'Personal • Easy' : 
+                         currentStep === 3 ? 'Behavioral • Medium' : 
+                         'Technical • Easy'}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    &ldquo;{currentSimulation.type === &apos;question&apos; ? (typingText || currentSimulation.content) : currentQuestion}&rdquo;
+                    {currentSimulation.type === &apos;question&apos; && typingText && <span className="animate-pulse">|</span>}
+                  </p>
+                </div>
+              )}
+
+              {/* Answer Section */}
+              {currentSimulation.type === 'answer' && (
+                <div className="bg-gray-100 rounded-lg p-4 animate-fadeIn">
+                  <div className="flex items-center space-x-2 mb-3">
+                    <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                    <span className="text-xs text-gray-600">Recording...</span>
+                  </div>
+                  <div className="bg-white rounded border border-gray-200 p-3 min-h-[80px]">
+                    <p className="text-gray-700 text-sm leading-relaxed">
+                      {typingText || currentSimulation.content}
+                      {typingText && <span className="animate-pulse">|</span>}
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* Feedback Section */}
+              {currentSimulation.type === 'feedback' && (
+                <div className="bg-green-50 rounded-lg p-4 border border-green-200 animate-fadeIn">
+                  <div className="flex items-center mb-3">
+                    <span className="text-green-600 font-bold text-sm">FEEDBACK</span>
+                  </div>
+                  <p className="text-gray-700 text-sm mb-3">{currentSimulation.content}</p>
+                  {showScores && (
+                    <div className="flex space-x-3 text-sm">
+                      <div className="text-center">
+                        <div className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center font-bold text-xs animate-bounce">
+                          {scores.relevance}
+                        </div>
+                        <p className="text-xs text-gray-600 mt-1">Relevance</p>
+                      </div>
+                      <div className="text-center">
+                        <div className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center font-bold text-xs animate-bounce delay-100">
+                          {scores.clarity}
+                        </div>
+                        <p className="text-xs text-gray-600 mt-1">Clarity</p>
+                      </div>
+                      <div className="text-center">
+                        <div className="w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center font-bold text-xs animate-bounce delay-200">
+                          {scores.confidence}
+                        </div>
+                        <p className="text-xs text-gray-600 mt-1">Confidence</p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+              
+              {/* Progress indicator */}
+              <div className="flex justify-center space-x-2 pt-2">
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <div
+                    key={i}
+                    className={`w-1.5 h-1.5 rounded-full transition-colors duration-300 ${
+                      Math.floor(currentStep / 3) >= i ? 'bg-blue-500' : 'bg-gray-300'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Laptop Base */}
+      <div className="bg-gray-700 h-6 rounded-b-3xl shadow-lg"></div>
+      <div className="bg-gray-600 h-3 rounded-b-2xl mx-4"></div>
+    </div>
+  );
+}
